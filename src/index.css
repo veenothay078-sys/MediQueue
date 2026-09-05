@@ -158,3 +158,26 @@
   background-color: var(--bg-surface-subtle);
   border-color: var(--border-strong);
 }
+
+/* PWA Mobile & Safe Area Inset Support */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Standalone PWA mobile scroll & tap polish */
+@media all and (display-mode: standalone) {
+  body {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  input, textarea, select {
+    user-select: auto;
+    -webkit-user-select: auto;
+  }
+}

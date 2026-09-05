@@ -4,6 +4,7 @@ import { Navbar } from '../components/common/Navbar';
 import { MobileNav } from '../components/common/MobileNav';
 import { Footer } from '../components/common/Footer';
 import { ToastContainer } from '../components/common/ToastContainer';
+import { PWAInstallPrompt } from '../components/common/PWAInstallPrompt';
 import { useApp } from '../context/AppContext';
 import { ShieldCheck, User } from 'lucide-react';
 
@@ -59,6 +60,9 @@ export const RootLayout = () => {
 
       {/* Mobile Navigation Touch Bar */}
       <MobileNav />
+
+      {/* PWA Install & Update Prompts */}
+      <PWAInstallPrompt />
 
       {/* Global Toast Stack */}
       <ToastContainer />
