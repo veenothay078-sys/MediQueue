@@ -9,7 +9,7 @@ export function registerServiceWorker(callbacks = {}) {
     return;
   }
 
-  window.addEventListener('load', () => {
+  const register = () => {
     navigator.serviceWorker
       .register('/sw.js', { scope: '/' })
       .then((registration) => {
@@ -39,7 +39,13 @@ export function registerServiceWorker(callbacks = {}) {
       .catch((error) => {
         console.error('[MediQueue PWA] Service Worker registration failed:', error);
       });
-  });
+  };
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    register();
+  } else {
+    window.addEventListener('load', register);
+  }
 }
 
 export function unregisterServiceWorker() {

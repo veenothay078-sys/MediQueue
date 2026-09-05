@@ -1,10 +1,12 @@
 {
+  "id": "/",
   "name": "MediQueue",
   "short_name": "MediQueue",
   "description": "Smart hospital appointment and queue management application.",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "window-controls-overlay", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#0F172A",
   "theme_color": "#0F766E",
@@ -48,13 +50,6 @@
       "short_name": "Book",
       "description": "Book a doctor consultation in 5 easy steps",
       "url": "/book-appointment",
-      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Hospital Operations",
-      "short_name": "Admin",
-      "description": "Manage clinical queues and physician calling stations",
-      "url": "/admin",
       "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     }
   ]
