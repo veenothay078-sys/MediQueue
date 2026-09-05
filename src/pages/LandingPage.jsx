@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import {
   CalendarCheck,
@@ -19,6 +19,20 @@ import {
 
 export const LandingPage = () => {
   const { departments, doctors } = useApp();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // If launched as installed mobile PWA, jump straight to the Patient App Dashboard
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true ||
+      location.search.includes('source=pwa');
+
+    if (isStandalone) {
+      navigate('/patient/dashboard', { replace: true });
+    }
+  }, [navigate, location]);
 
   return (
     <div className="space-y-16 sm:space-y-24 py-6 max-w-7xl mx-auto">
