@@ -140,24 +140,25 @@ if (!fs.existsSync(iconsDir)) {
 // 1. Generate 192x192
 console.log('Generating 192x192 PNG icon...');
 const png192 = createPng(192, 192, (x, y, w, h) => drawMediQueueIcon(x, y, w, h, false));
+fs.writeFileSync(path.join(iconsDir, 'icon-192.png'), png192);
 fs.writeFileSync(path.join(iconsDir, 'icon-192x192.png'), png192);
 
 // 2. Generate 512x512
 console.log('Generating 512x512 PNG icon...');
 const png512 = createPng(512, 512, (x, y, w, h) => drawMediQueueIcon(x, y, w, h, false));
+fs.writeFileSync(path.join(iconsDir, 'icon-512.png'), png512);
 fs.writeFileSync(path.join(iconsDir, 'icon-512x512.png'), png512);
 
 // 3. Generate 512x512 Maskable (full bleed background for Android Adaptive Icons)
 console.log('Generating 512x512 Maskable PNG icon...');
 const pngMaskable = createPng(512, 512, (x, y, w, h) => drawMediQueueIcon(x, y, w, h, true));
+fs.writeFileSync(path.join(iconsDir, 'icon-maskable-512.png'), pngMaskable);
 fs.writeFileSync(path.join(iconsDir, 'icon-maskable-512x512.png'), pngMaskable);
 
 // 4. Generate 180x180 Apple Touch Icon
 console.log('Generating 180x180 Apple Touch PNG icon...');
 const pngApple = createPng(180, 180, (x, y, w, h) => drawMediQueueIcon(x, y, w, h, true));
 fs.writeFileSync(path.join(iconsDir, 'apple-touch-icon.png'), pngApple);
-
-// Also save root copy for maximum iOS compatibility
 fs.writeFileSync(path.resolve('public', 'apple-touch-icon.png'), pngApple);
 
 console.log('All PWA PNG icons successfully generated!');

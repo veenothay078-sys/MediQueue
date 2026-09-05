@@ -11,7 +11,7 @@ export function registerServiceWorker(callbacks = {}) {
 
   const register = () => {
     navigator.serviceWorker
-      .register('/sw.js', { scope: '/' })
+      .register('/service-worker.js', { scope: '/' })
       .then((registration) => {
         console.log('[MediQueue PWA] Service Worker registered with scope:', registration.scope);
 
