@@ -19,6 +19,8 @@ import {
   LayoutDashboard,
   Home,
   CheckCircle2,
+  Smartphone,
+  Download,
 } from 'lucide-react';
 
 export const Navbar = () => {
@@ -143,6 +145,16 @@ export const Navbar = () => {
                 </button>
               </div>
 
+              {/* Install App Button */}
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('mediqueue_open_install_modal'))}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-teal-200 dark:border-teal-800/80 bg-teal-50/80 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/80 text-xs font-semibold transition-all"
+                title="Install MediQueue as an App"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                <span className="hidden md:inline">Install App</span>
+              </button>
+
               {/* Book Action for patient */}
               {role === 'patient' && (
                 <Link
@@ -251,6 +263,17 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.dispatchEvent(new CustomEvent('mediqueue_open_install_modal'));
+                }}
+                className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-teal-700 dark:text-teal-400 bg-teal-50/60 dark:bg-teal-950/40 hover:bg-teal-100 transition-all mt-2"
+              >
+                <Smartphone className="w-4 h-4" />
+                Install MediQueue App
+              </button>
             </div>
           )}
         </div>
